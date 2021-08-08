@@ -88,6 +88,16 @@ function LinkedList() {
     }
     return -1;
   }
+  
+  this.print = function() {
+        var curr = this.head;
+        var str = "";
+        while (curr) {
+            str += curr.element + " ";
+            curr = curr.next;
+        }
+        console.log(str);
+    }
 
 }
 
