@@ -40,7 +40,7 @@ function LinkedList() {
           current = current.next;
         }
         node.next = current;
-        //prev.next = node;
+        prev.next = node;
       }
       this.size++;
     }
