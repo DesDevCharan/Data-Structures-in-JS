@@ -21,7 +21,7 @@ function LinkedList() {
     this.size++;
   }
 
-   this.insertAt = function(element, index) {
+  this.insertAt = function(element, index) {
     if (index < 0 || index > this.size || index === undefined) {
       return console.log("Not a valid index");
     } else {
@@ -88,20 +88,53 @@ function LinkedList() {
     }
     return -1;
   }
-  
-  this.print = function() {
-        var curr = this.head;
-        var str = "";
-        while (curr) {
-            str += curr.element + " ";
-            curr = curr.next;
-        }
-        console.log(str);
-    }
 
+  this.print = function(head) {
+    var curr = head;
+    var str = "";
+    while (curr) {
+      str += curr.element + " ";
+      curr = curr.next;
+    }
+    console.log(str);
+  }
+
+  this.reverseIterative = function(head) {
+    var node = head;
+    var previous = null;
+
+    while (node) {
+      // save next or you lose it!!!
+      var save = node.next;
+      // reverse pointer
+      node.next = previous;
+      // increment previous to current node
+      previous = node;
+      // increment node to next node or null at end of list
+      node = save;
+    }
+    return previous; // Change the list head !!!
+  }
+  this.returnRecursive = (head) => {
+    if (!head || !head.next) {
+      return head;
+    }
+    let temp = this.returnRecursive(head.next);
+    head.next.next = head;
+    head.next = undefined;
+    return temp;
+  }
 }
 
 var ll = new LinkedList();
-ll.insertAt(0);
-
-/* console.log(ll) */
+ll.add(1);
+ll.add(2);
+ll.add(3);
+ll.add(4);
+ll.add(5);
+ll.add(6);
+/* ll.insertAt(4,2);
+ll.removeFrom(4,2); */
+ll.print(ll.head);
+const l1 = ll.returnRecursive(ll.head);
+ll.print(l1);
