@@ -21,12 +21,26 @@ function DoublyLinkedlist() {
 
   this.print = function(head) {
     let curr = head;
-    let str = " "
+    let str = " ";
     while (curr) {
       str += curr.element + " ";
       curr = curr.next
     }
     console.log("Print", str)
+    return str;
+  }
+  this.reverse = function(head) {
+    let curr = head;
+    let str = " ";
+    if (curr === null) return;
+    while (curr.next) {
+      curr = curr.next;
+    }
+    while (curr) {
+      str += curr.element + " ";
+      curr = curr.prev;
+    }
+    console.log("Reverse", str)
     return str;
   }
 }
@@ -36,3 +50,4 @@ dll.insertAtHead(1);
 dll.insertAtHead(2);
 dll.insertAtHead(3);
 dll.print(dll.head);
+dll.reverse(dll.head);
